@@ -1,0 +1,207 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "type": "Admin",
+      "slug": "dashboard-analytics"
+    },
+    {
+      "url": "/calendar",
+      "name": "Calender",
+      "icon": "menu-icon tf-icons bx bx-calendar",
+      "type": "Admin",
+      "slug": "calender"
+    },
+    {
+      "url": "/appointment",
+      "name": "Patient",
+      "icon": "menu-icon tf-icons bx bx-calendar-edit",
+      "type": "Admin",
+      "slug": "Patients"
+    },
+    {
+      "name": "Doctor",
+      "icon": "menu-icon tf-icons bx bx-layout",
+      "type": "Admin",
+      "slug": "emr",
+      "submenu": [
+        {
+          "url": "/doctor",
+          "name": "Manage Doctor",
+          "slug": "emr-without-menu"
+        }
+      ]
+    },
+    {
+      "url": "/lab",
+      "name": "Lab",
+      "icon": "menu-icon tf-icons bx bx-calendar-edit",
+      "type": "Admin",
+      "slug": "Labs"
+    },
+    {
+      "url": "/help",
+      "name": "Help",
+      "icon": "menu-icon tf-icons bx bx-calendar-edit",
+      "type": "Admin",
+      "slug": "Patients"
+    },
+    {
+      "name": "Accounting",
+      "icon": "menu-icon tf-icons bx bx-briefcase",
+      "type": "Admin",
+      "slug": "accounting",
+      "submenu": [
+        {
+          "url": "/billing",
+          "name": "Billing",
+          "slug": "layouts-without-menu"
+        },
+        {
+          "url": "/petty_cash",
+          "name": "Petty Cash",
+          "slug": "layouts-without-navbar"
+        }
+      ]
+    },{
+      "name": "Reports",
+      "icon": "menu-icon tf-icons bx bx-bar-chart-alt",
+      "type": "Admin",
+      "slug": "reports",
+      "submenu": [
+        {
+          "url": "/patient_report",
+          "name": "Patient Report",
+          "slug": "layouts-without-menu"
+        },
+        {
+          "url": "/daily_collection",
+          "name": "Daily Collection",
+          "slug": "layouts-without-navbar"
+        }
+      ]
+    },
+    {
+      "url": "/",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "type": "User",
+      "slug": "dashboard-analytics"
+    },
+    {
+      "url": "/calendar",
+      "name": "Calender",
+      "icon": "menu-icon tf-icons bx bx-calendar",
+      "type": "User",
+      "slug": "calender"
+    },
+    {
+      "url": "/appointment",
+      "name": "Appointment",
+      "icon": "menu-icon tf-icons bx bx-calendar-edit",
+      "type": "User",
+      "slug": "appointments"
+    },
+  
+    {
+      "url": "/lab",
+      "name": "Vendor Labs",
+      "icon": "menu-icon tf-icons bx bx-calendar-edit",
+      "type": "User",
+      "slug": "Labs"
+    },
+    {
+      "url": "/help",
+      "name": "Help",
+      "icon": "menu-icon tf-icons bx bx-calendar-edit",
+      "type": "User",
+      "slug": "helps"
+    },
+    {
+      "name": "Accounting",
+      "icon": "menu-icon tf-icons bx bx-briefcase",
+      "type": "User",
+      "slug": "accounting",
+      "submenu": [
+        {
+          "url": "/billing",
+          "name": "Billing",
+          "slug": "layouts-without-menu"
+        },
+        {
+          "url": "/petty_cash",
+          "name": "Petty Cash",
+          "slug": "layouts-without-navbar"
+        }
+      ]
+    },{
+      "name": "Reports",
+      "icon": "menu-icon tf-icons bx bx-bar-chart-alt",
+      "type": "User",
+      "slug": "reports",
+      "submenu": [
+        {
+          "url": "/patient_report",
+          "name": "Patient Report",
+          "slug": "layouts-without-menu"
+        },
+        {
+          "url": "/daily_collection",
+          "name": "Daily Collection",
+          "slug": "layouts-without-navbar"
+        }
+      ]
+    },
+    {
+      "url": "/superadmin-dashboard",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "type": "Super Admin",
+      "slug": "dashboard-analytics"
+    },
+    {
+      "url": "/clinics",
+      "name": "Clinics",
+      "icon": "menu-icon tf-icons bx bx-calendar",
+      "type": "Super Admin",
+      "slug": "clinics"
+    },
+    {
+      "url": "/user",
+      "name": "User",
+      "icon": "menu-icon tf-icons bx bx-calendar-edit",
+      "type": "Super Admin",
+      "slug": "user"
+    },
+    {
+      "url": "/notification",
+      "name": "Notifications",
+      "icon": "menu-icon tf-icons bx bx-calendar-edit",
+      "type": "Super Admin",
+      "slug": "notification"
+    },
+    {
+      "url": "/payments",
+      "name": "Payments",
+      "icon": "menu-icon tf-icons bx bx-calendar-edit",
+      "type": "Super Admin",
+      "slug": "payment"
+    },
+    {
+      "url": "/enquiry",
+      "name": "Enquiry",
+      "icon": "menu-icon tf-icons bx bx-calendar-edit",
+      "type": "Super Admin",
+      "slug": "enquiry"
+    },
+    {
+      "url": "/help",
+      "name": "Help",
+      "icon": "menu-icon tf-icons bx bx-calendar-edit",
+      "type": "Super Admin",
+      "slug": "help"
+    }
+    ]
+}
