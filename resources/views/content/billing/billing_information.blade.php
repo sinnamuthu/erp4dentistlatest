@@ -12,9 +12,7 @@
   <ul class="tabs">
     <li><a href="#tab1">Confirmed Treatments</a></li>
     <li><a href="#tab2">Bills</a></li>
-
-	
-	
+    <li><a href="#tab3">Receipts</a></li>
 </ul>
 <div id="tab1" class="tab_content"><!--History-->
         <div class="treatment">
@@ -124,14 +122,14 @@
                             <td>&#8377;  {{$billss->advance_amount}}</td>
                             <td>&#8377;  {{$billss->balance_amt}}</td>
                             <td><div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item"  data-toggle="modal" data-target="#chiefcomplaintModal" href="javascript:void(0);"><i class="bx bx-edit-alt me-1" ></i> Edit</a>
-                                  {{-- <a class="dropdown-item" href="{{ route('patient_information.show',$appointments->id) }}"><i class="bx bx-street-view me-1"></i> History</a> --}}
-                                  {{-- <a class="dropdown-item" data-toggle="modal" data-target="#advance_center" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Add Advance</a>
-                                  <a class="dropdown-item" data-toggle="modal" data-target="#bill_center" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Add Bill</a> --}}
+                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                              <div class="dropdown-menu">
+                             
+                                {{-- <a class="dropdown-item" href="{{ route('patient_information.show',$appointments->id) }}"><i class="bx bx-street-view me-1"></i> History</a> --}}
+                                {{-- <a class="dropdown-item" data-toggle="modal" data-target="#advance_center" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Add Advance</a> --}}
+                                <a class="dropdown-item getreciept" id="getreciept" data-toggle="modal"  data-target="#reciept_center"  data-balance_amt="{{$billss->balance_amt}}" data-bill_id="{{$billss->bill_id}}"  data-appo_id="{{$billss->appo_id}}" data-branch="{{$billss->branch}}" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Add Reciept</a>
 
-                                </div></td>
+                              </div></td>
                           </tr>
 
                           @endforeach
@@ -148,6 +146,51 @@
 
 
 
+<div id="tab3" class="tab_content"><!--Patient Info-->
+  <div class="treatment">
+      <div class="treatment-bx">
+          <div >
+          <div class ="total-blk">
+              {{-- <div class="row">
+                  <aside class="col-sm-6">
+                      <p>Total Estimated Plan Amount: ₹ 1,75,865</p>
+                  </aside>
+                  <aside class="col-sm-6">
+                      <p class="text-end">Total Confirmed Plan Amount: ₹ 54,800</p>
+                  </aside>
+              </div> --}}
+          </div>
+                      <table class="obv">
+                          
+                      <tr>
+                          <th>Receipt No</th>
+                          <th>Receipt Date</th>
+                          <th>Doctor</th>
+                          <th>Bill No</th>
+                          <th>Payment Mode</th>
+                          <th>Receipt Amount</th>
+                        </tr>
+                        @foreach($receipt as $key => $receipts)
+                        <tr>
+                          <td>{{$receipts->id}}</td>
+                          <td>{{$receipts->reciept_date}}</td>
+                          <td>{{$receipts->choose_doctor}}</td>
+                          <td>{{$receipts->getbill_id}}</td>
+                          <td>{{$receipts->paymethod}}</td>
+                          <td>{{$receipts->getbalance_amt}}</td>
+                        </tr>
+
+                        @endforeach
+                       
+                      </table>
+          </div>
+         
+     
+      </div>
+
+  </div>   
+
+</div>
 
 
 
@@ -285,6 +328,21 @@ $(document).ready(function () {
     
 
   });
+
+  $(".getreciept").click(function(){
+
+var getbalance_amt = $(this).attr("data-balance_amt");
+var getbill_id = $(this).attr("data-bill_id");
+var getappo_id = $(this).attr("data-appo_id");
+var getbranch= $(this).attr("data-branch");
+
+$("#getbalance_amt").val(getbalance_amt);
+$("#getbill_id").val(getbill_id);
+$("#getappo_id").val(getappo_id);
+$("#getbranch").val(getbranch);
+
+
+});
 
 
   //end billcenter

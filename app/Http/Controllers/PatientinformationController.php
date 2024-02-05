@@ -24,6 +24,7 @@ use App\Models\Labmaster;
 use App\Models\Docpayout;
 use App\Models\Procedures;
 use App\Models\Bills;
+use App\Models\Receipt;
 use Intervention\Image\Facades\Image;
 
 class PatientinformationController extends Controller
@@ -49,6 +50,7 @@ class PatientinformationController extends Controller
     protected $labmaster;
     protected $docpayout;
     protected $bills;
+    protected $receipt;
 
     public function __construct(){
        $this->patientinformation = new patientinformation();
@@ -71,6 +73,7 @@ class PatientinformationController extends Controller
        $this->labmaster = new Labmaster();
        $this->docpayout = new Docpayout();
        $this->bills = new Bills();
+       $this->receipt = new Receipt();
        
     }
 
@@ -125,6 +128,16 @@ class PatientinformationController extends Controller
        $this->bills->create($request->all());
        session()->flash('success', 'Bills Created Successfully.');
        return redirect()->back();
+   }
+
+   public function reciepts(Request $request)
+   {
+
+    // dd($request);
+
+    $this->receipt->create($request->all());
+    session()->flash('success', 'Reciepts Created Successfully.');
+    return redirect()->back();
    }
 
    /**

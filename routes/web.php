@@ -139,6 +139,8 @@ Route::post('/examination/updatedata', 'App\Http\Controllers\EmrController@updat
 //accounting
 Route::resource("/billing", BillingController::class)->middleware('auth');
 
+Route::get('/billing/report/{id}', 'App\Http\Controllers\BillingController@report')->name('billing.report');
+
 //Route::resource("/vendor", BillingController::class)->middleware('auth');
 
 Route::resource("/lab", VendorController::class)->middleware('auth');
@@ -183,6 +185,8 @@ Route::get('/treateditdata', 'App\Http\Controllers\PatientinformationController@
 Route::get('/labeditdata', 'App\Http\Controllers\PatientinformationController@labeditdata')->name('labeditdata');
 
 Route::post('/bills', 'App\Http\Controllers\PatientinformationController@bills')->name('bills');
+
+Route::post('/reciepts', 'App\Http\Controllers\PatientinformationController@reciepts')->name('reciepts');
 
 
 Route::post('/treateditmodal', 'App\Http\Controllers\PatientinformationController@treateditmodal')->name('treateditmodal');

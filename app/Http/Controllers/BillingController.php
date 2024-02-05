@@ -24,6 +24,7 @@ use App\Models\Procedures;
 use App\Models\Docpayout;
 use App\Models\Labmaster;
 use App\Models\Bills;
+use App\Models\Receipt;
 use Intervention\Image\Facades\Image;
 use App\Models\patientinformation;
 
@@ -52,6 +53,7 @@ class BillingController extends Controller
     protected $procedures;
     protected $labmaster;
     protected $docpayout;
+    protected $receipt;
 
 
     public function __construct(){
@@ -76,6 +78,7 @@ class BillingController extends Controller
        $this->docpayout = new Docpayout();
        $this->labmaster = new Labmaster();
        $this->procedures = new Procedures();
+       $this->receipt = new Receipt();
     }
 
 
@@ -175,8 +178,68 @@ class BillingController extends Controller
      $response['amount'] = Plan::where('appo_id', $id)->selectRaw('SUM(price_proce) as price_proce, SUM(balance_amt) as balance_amt, SUM(invoice_amt) as invoice_amt, SUM(advance_amt) as advance_amt')->first();
      
      $response['bills'] = Bills::where('appo_id', '=', $id)->where('branch', '=', $branch)->get();
+
+     $response['receipt'] = Receipt::where('getappo_id', '=', $id)->where('getbranch', '=', $branch)->get();
      
      return view('content.billing.billing_information')->with($response);
+        //
+    }
+
+
+    public function report($id)
+    {
+ 
+     $response['appointment_id'] = $id;
+ 
+     $id = $id;
+ 
+     $branch = Auth::user()->branch;
+ 
+     $response['profile'] = Profile::where('id', '=', $branch)->get();
+     
+     $response['app_types'] = $this->app_types->all();
+
+     $response['labmaster'] = $this->labmaster->all();
+
+     $response['docpayout'] = $this->docpayout->all();
+ 
+     $response['app_subtypes'] = $this->app_subtypes->all();
+ 
+     $response['occupation'] = $this->occupation->all();
+ 
+     $response['examination'] = Emr::where('appo_id', '=', $id)->where('branch', '=', $branch)->get();
+ 
+     $response['observ'] = Observ::where('appo_id', '=', $id)->where('branch', '=', $branch)->get();
+ 
+     $response['note'] = Note::where('appo_id', '=', $id)->where('branch', '=', $branch)->get();
+ 
+     $response['plan'] = Plan::where('appo_id', '=', $id)->where('branch', '=', $branch)->get();
+ 
+     $response['patientinformations'] = patientinformation::where('appo_id', '=', $id)->where('branch', '=', $branch)->get();
+ 
+     $response['call'] = Call::where('appo_id', '=', $id)->where('branch', '=', $branch)->get();
+ 
+     $response['doctorlist'] = Doctor::where('doc_branch', '=', $branch)->get();
+ 
+     $response['occlusionsubtype'] = Occlusionsubtype::all();
+ 
+     $response['chiefcomps'] = Chiefcomps::all();
+ 
+     $response['procedures'] = Procedures::all();
+ 
+     $response['intra_oral_observations'] = Intra_oral_observations::all();
+ 
+     $response['patientimage'] = Patientimage::where('appo_id', '=', $id)->where('branch', '=', $branch)->get();
+ 
+     $response['lab'] = Lab::where('appo_id', '=', $id)->where('branch', '=', $branch)->get();
+ 
+     $response['amount'] = Plan::where('appo_id', $id)->selectRaw('SUM(price_proce) as price_proce, SUM(balance_amt) as balance_amt, SUM(invoice_amt) as invoice_amt, SUM(advance_amt) as advance_amt')->first();
+     
+     $response['bills'] = Bills::where('appo_id', '=', $id)->where('branch', '=', $branch)->get();
+
+     $response['receipt'] = Receipt::where('getappo_id', '=', $id)->where('getbranch', '=', $branch)->get();
+     
+     return view('layouts.print')->with($response);
         //
     }
 

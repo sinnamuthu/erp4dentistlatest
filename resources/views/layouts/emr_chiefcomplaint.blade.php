@@ -467,6 +467,74 @@
 
 
    <!-- Modal Appointment -->
+   <div class="modal fade" id="reciept_center" tabindex="-1" role="dialog" aria-labelledby="reciept_centerCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalTitle">Add Reciept</h5>
+      
+        </div>
+        <form method="POST" action="{{ route('reciepts') }}" >
+        @csrf
+        <div class="modal-body">
+
+  
+    <div class="form-row row">
+      <div class="form-group col-md-6">
+        <label for="inputZip">Reciept Date</label>
+        <input type="date" class="form-control"  name="reciept_date" id="reciept_date">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputZip">Reciept Amount</label>
+        <input type="text" class="form-control"  name="getbalance_amt" id="getbalance_amt">
+        <input type="hidden" class="form-control"  name="getbill_id" id="getbill_id">
+        <input type="hidden" class="form-control"  name="getappo_id" id="getappo_id">
+        <input type="hidden" class="form-control"  name="getbranch" id="getbranch">
+      </div>
+    </div>
+
+    <br>
+  
+    <div class="form-row row">
+
+      <div class="form-group col-md-6">
+        <label for="inputEmail4"> Doctor</label>
+        <select id="choose_doctor" name="choose_doctor" class="form-control">
+          @foreach($doctorlist as $doctorlists)
+          <option selected value="{{ $doctorlists->doc_name }}" >{{ $doctorlists->doc_name }}</option>
+      @endforeach
+        </select>
+      </div>
+    
+      <div class="form-group col-md-6">
+        <label for="inputZip">Payment Method</label>
+        <select id="paymethod" name="paymethod" class="form-control">
+            <option  value="Cash">Cash</option>
+            <option  value="Cheque">Cheque</option>
+            <option  value="Credit Card">Credit Card</option>
+            <option  value="Net Banking">Net Banking</option>
+            <option  value="Insurance">Insurance</option>
+            <option  value="Phone pe">Phone pe</option>
+            <option  value="Google Pay">Google Pay</option>
+            <option  value="PayTM">PayTM</option>
+            <option  value="Bharat Pay">Bharat Pay</option>
+            <option  value="Others">Others</option>
+          </select>
+      </div>
+    </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="appointment_close" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+   <!-- Modal Appointment -->
    <div class="modal fade" id="advance_center" tabindex="-1" role="dialog" aria-labelledby="advance_centerCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered tab-work" role="document">
       <div class="modal-content">

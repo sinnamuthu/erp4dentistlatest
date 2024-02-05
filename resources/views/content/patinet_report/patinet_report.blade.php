@@ -15,7 +15,7 @@
   <div class="row">
   <h5 class="card-header col-md-8">Patient Report</h5>
   <div class='col-md-4'>
-  <button type="submit" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModalCenter">Add Appointment</button>
+  
   </div>
   
   </div>
@@ -52,8 +52,8 @@
             <div class="dropdown">
               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                <a class="dropdown-item" href="{{ route('billing.report',$appointments->id) }}"><i class="bx bx-edit-alt me-1"></i> Print</a>
+
               </div>
             </div>
           </td>

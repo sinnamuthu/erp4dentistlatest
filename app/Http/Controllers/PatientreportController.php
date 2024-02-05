@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\Profile;
+use Illuminate\Support\Facades\Auth;
 
 class PatientreportController extends Controller
 {
@@ -18,8 +20,16 @@ class PatientreportController extends Controller
 
    public function index()
    {
-       $response['appointment'] = $this->appointment->all();
-       return view('content.patient_report.patient_report')->with($response);
+      
+    $branch = Auth::user()->branch;
+    $response['profile'] = Profile::where('id', '=', $branch)->get();
+    $response['appointment'] = Appointment::select('appointment.id','appointment.title','appointment.firstname','appointment.lastname','appointment.date_appointment','appointment.intime','appointment.outtime','appointment.countrycode','appointment.contact_no','appointment.email','appointment.status','appointment.choose_doctor','appointment.reason_appointment','appointment.note','appointment.created_at','appointment.updated_at','appointment.branch')
+    ->join('plan', 'appointment.id', '=', 'plan.appo_id')
+    ->where('appointment.branch', $branch)
+    ->groupBy('appointment.id','appointment.title','appointment.firstname','appointment.lastname','appointment.date_appointment','appointment.intime','appointment.outtime','appointment.countrycode','appointment.contact_no','appointment.email','appointment.status','appointment.choose_doctor','appointment.reason_appointment','appointment.note','appointment.created_at','appointment.updated_at','appointment.branch')
+    ->get();
+ 
+       return view('content.patinet_report.patinet_report')->with($response);
        // return view('content.appointment.appointment');
    }
 

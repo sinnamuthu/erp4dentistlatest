@@ -75,11 +75,6 @@
           "url": "/patient_report",
           "name": "Patient Report",
           "slug": "layouts-without-menu"
-        },
-        {
-          "url": "/daily_collection",
-          "name": "Daily Collection",
-          "slug": "layouts-without-navbar"
         }
       ]
     },
@@ -146,11 +141,6 @@
           "url": "/patient_report",
           "name": "Patient Report",
           "slug": "layouts-without-menu"
-        },
-        {
-          "url": "/daily_collection",
-          "name": "Daily Collection",
-          "slug": "layouts-without-navbar"
         }
       ]
     },
